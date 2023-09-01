@@ -39,6 +39,15 @@ function createItem(name:string, price:number, description:string){
 function addToCart(item:Item, user:User){
     console.log(`${user.name} has added ${item.name} to cart\n`)
     user.cart.push(item)
+    user.cart.sort((n1, n2) => {
+        if (n1.id > n2.id){
+            return 1;
+        }
+        if (n1.id < n2.id){
+            return -1;
+        }
+        return 0
+    })
 }
 
 function removeFromCart(shopItem:Item, user:User){

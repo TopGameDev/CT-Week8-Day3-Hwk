@@ -22,6 +22,15 @@ function createItem(name, price, description) {
 function addToCart(item, user) {
     console.log(`${user.name} has added ${item.name} to cart\n`);
     user.cart.push(item);
+    user.cart.sort((n1, n2) => {
+        if (n1.id > n2.id) {
+            return 1;
+        }
+        if (n1.id < n2.id) {
+            return -1;
+        }
+        return 0;
+    });
 }
 function removeFromCart(shopItem, user) {
     let count = user.cart.filter(item => item === shopItem).length;
@@ -46,7 +55,7 @@ function printCart(user) {
     });
     console.log(" ");
 }
-let user1 = createUser('Trevon', 25);
+let user1 = createUser('Trevon', 28);
 let miniBoard = createItem('Tech Deck', 5.99, 'Do you have what it takes to be the best?!?');
 let saber = createItem('Light Saber', 39.99, 'May the force be with your');
 let chess = createItem('Chess Board', 105.99, 'Board signed by Magnus Carlsen - World Champion');
